@@ -1,0 +1,20 @@
+--- Cloudinit.pm    	2025-05-19 18:26:06
++++ Cloudinit.pm.patched	2025-05-23 22:25:48
+@@ -333,6 +333,17 @@
+ 	    $i++;
+ 	}
+     }
++
++#PATCH inserted here to create new 'meta' dict
++    my ($hostname, undef) = get_hostname_fqdn($conf, $uuid);
++    $meta_data->{'meta'} = {
++        hostname => $hostname,
++        uuid => $uuid,
++        admin_username => $conf->{ciuser} || 'NewAdmin',
++        admin_pass => $conf->{cipassword} || '',
++    };
++
++
+     my $json = encode_json($meta_data);
+     return $json;
+ }
