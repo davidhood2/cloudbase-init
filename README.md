@@ -25,7 +25,7 @@ rmdir /s /q "C:\Users\johndoe"
   * _NB: Ensure the ‘order’ of subsequent items in Unattend.xml on are incremented to allow this command to execute first_
 3. Then copy the necessary config files for `cloudbase-init.json` and `cloudbase-init-unattend.json` into the conf folder.
 
-#Configure Cloudbase and Win11 to run with Sysprepped image
+## Configure Cloudbase and Win11 to run with Sysprepped image
 1. Sysprep has issues (especially in the standard Win11 client) with certain apps not being installed for all users. We can fix this removing them en-mass. Just before sys prep: (it won’t boot properly afterwards without sysprep, and you can't open files after running these commands)
 ```
 Get-AppxPackage -AllUsers | Remove-AppxPackage
